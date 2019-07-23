@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pyTelegramBotAPI = "*"
+markovify = "*"
+dataset = "*"
+cachetools = "*"
+psycopg2-binary = "*"
+python-decouple = "*"
+pytest-cov = "*"
+codecov = "*"
+spacy = "*"
+spacy-cld = "*"
+attrdict = "*"
+alembic = "*"
+sqlalchemy-utils = "*"
+
+[dev-packages]
+ipdb = "*"
+pytest = "*"
+"flake8" = "*"
+
+[requires]
+python_full_version = "3.7.2"

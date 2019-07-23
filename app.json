@@ -1,0 +1,27 @@
+{
+  "name": "Svistun Bot",
+  "description": "Генерация псевдослучайных предложений с использованием модели цепи Маркова",
+  "repository": "https://github.com/alebymars/svistun",
+  "keywords": ["python"],
+  "env": {
+    "TELEGRAM_TOKEN": {
+      "description": "Телеграм токен, сгенерированный для бота."
+    },
+    "ADMIN_USERNAMES": {
+      "description": "Имена пользователей Telegram (разделяются запятой)."
+    },
+    "SENTENCE_COMMAND": {
+      "description": "Имя команды для запуска генерации предложений.",
+      "value": "sentence",
+      "required": false
+    }
+  },
+  "addons": [
+    {
+      "plan": "heroku-postgresql",
+      "options": {
+        "version": "10"
+      }
+    }
+  ]
+}

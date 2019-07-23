@@ -1,0 +1,8 @@
+/.idea
+venv/
+.DS_STORE
+*.swp
+.env
+.coverage
+__pycache__
+*.db
