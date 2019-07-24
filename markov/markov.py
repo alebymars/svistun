@@ -33,7 +33,7 @@ def confirmation_required(func):
     def wrapper_confirmation_required(message, *args, **kwargs):
         if message.text.startswith('/'):
             markup = telebot.types.ReplyKeyboardMarkup(
-                row_width=1, one_time_keyboard=True, selective=True
+                row_width=2, one_time_keyboard=True, selective=True
             )
             markup.add('Да', 'Нет')
             reply = bot.reply_to(
