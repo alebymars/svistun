@@ -37,19 +37,19 @@ def confirmation_required(func):
             )
             markup.add('Да', 'Нет')
             reply = bot.reply_to(
-                message, 'уверены ли вы?',
+                message, 'Уверены ли вы?',
                 reply_markup=markup
             )
-            logger.info(f'отправка подтверждения клавиатуры на {func.__name__}')
+            logger.info(f'Отправка подтверждения клавиатуры на {func.__name__}')
             callback = globals()[func.__name__]
             bot.register_next_step_handler(reply, callback)
             return
 
         elif message.text == 'Да':
-            logger.info(f'получено положительное подтверждение для {func.__name__}')
+            logger.info(f'Получено положительное подтверждение для {func.__name__}')
             func(message, *args, **kwargs)
 
-        logger.info('удаление клавиатуры')
+        logger.info('Удаление клавиатуры')
         markup = telebot.types.ReplyKeyboardRemove()
         bot.reply_to(message, 'Отлично', reply_markup=markup)
 
@@ -58,7 +58,7 @@ def confirmation_required(func):
 
 @bot.message_handler(commands=[settings.SENTENCE_COMMAND])
 def generate_sentence(message, reply=False):
-    logger.info(f'предложение CMD вызывается в чате {message.chat.id}')
+    logger.info(f'Предложение CMD вызывается в чате {message.chat.id}')
     generated_message = speech.new_message(message.chat)
     if reply:
         bot.reply_to(message, generated_message)
@@ -70,7 +70,7 @@ def generate_sentence(message, reply=False):
 @admin_required
 @confirmation_required
 def remove_messages(message):
-    logger.info(f'удалить cmd вызывается в чате {message.chat.id}')
+    logger.info(f'Удалить cmd вызывается в чате {message.chat.id}')
     speech.delete_model(message.chat)
 
 
@@ -92,7 +92,7 @@ def flush_cache(message):
 
 @bot.message_handler(commands=[settings.HELP_COMMAND])
 def help(message):
-    logger.info(f'помощь cmd вызывается в чате {message.chat.id}')
+    logger.info(f'Помощь cmd вызывается в чате {message.chat.id}')
     username = bot.get_me().username
     sentence_command = settings.SENTENCE_COMMAND
     remove_command = settings.REMOVE_COMMAND
@@ -145,5 +145,5 @@ def notify_admin(message):
 
 
 if __name__ == '__main__':
-    notify_admin('бот стартанул')
+    notify_admin('Бот стартанул')
     bot.polling(none_stop=True)
